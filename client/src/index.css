@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Google Fonts - Poppins para títulos, Inter para corpo */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Removed unsupported @custom-variant rule (was causing unknownAtRules warning).
+  Dark mode is handled via the .dark class below. */
+
+:root {
+  /* Paleta PWM - Laranja e Preto */
+  --primary: #FF8C00; /* Laranja Vibrante */
+  --primary-foreground: #FFFFFF;
+  --sidebar-primary: #FF8C00;
+  --sidebar-primary-foreground: #FFFFFF;
+  --chart-1: #FF8C00;
+  --chart-2: #FFA500;
+  --chart-3: #FF9500;
+  --chart-4: #FF8C00;
+  --chart-5: #E67E00;
+  --radius: 0.65rem;
+  --background: #FFFFFF; /* Branco puro */
+  --foreground: #0F0F0F; /* Preto profundo */
+  --card: #FFFFFF;
+  --card-foreground: #0F0F0F;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F0F0F;
+  --secondary: #F5F5F5; /* Cinza claro */
+  --secondary-foreground: #404040; /* Cinza escuro */
+  --muted: #E8E8E8;
+  --muted-foreground: #666666;
+  --accent: #FF8C00; /* Laranja como accent */
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8E8E8;
+  --input: #F5F5F5;
+  --ring: #FF8C00;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0F0F0F;
+  --sidebar-accent: #FF8C00;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E8E8E8;
+  --sidebar-ring: #FF8C00;
+}
+
+.dark {
+  /* Paleta PWM Dark - Laranja e Preto */
+  --primary: #FF8C00;
+  --primary-foreground: #0F0F0F;
+  --sidebar-primary: #FF8C00;
+  --sidebar-primary-foreground: #0F0F0F;
+  --background: #0F0F0F; /* Preto profundo */
+  --foreground: #FFFFFF; /* Branco puro */
+  --card: #1A1A1A;
+  --card-foreground: #FFFFFF;
+  --popover: #1A1A1A;
+  --popover-foreground: #FFFFFF;
+  --secondary: #2A2A2A;
+  --secondary-foreground: #E8E8E8;
+  --muted: #404040;
+  --muted-foreground: #AAAAAA;
+  --accent: #FF8C00;
+  --accent-foreground: #0F0F0F;
+  --destructive: #FF5555;
+  --destructive-foreground: #0F0F0F;
+  --border: #2A2A2A;
+  --input: #1A1A1A;
+  --ring: #FF8C00;
+  --chart-1: #FF8C00;
+  --chart-2: #FFA500;
+  --chart-3: #FF9500;
+  --chart-4: #FF8C00;
+  --chart-5: #E67E00;
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-accent: #FF8C00;
+  --sidebar-accent-foreground: #0F0F0F;
+  --sidebar-border: #2A2A2A;
+  --sidebar-ring: #FF8C00;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+    outline-offset: 0;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Animações customizadas */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .animate-slideInRight {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  .animate-glowPulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  /* Hover effects para cards */
+  .group:hover {
+    transition: all 300ms;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #FF8C00 0%, #FF6B00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+
+  /* Respeitar preferência de movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
